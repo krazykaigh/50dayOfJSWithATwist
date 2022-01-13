@@ -1,46 +1,40 @@
 const jokeEL = document.getElementById('joke');
 const jokeBtn = document.getElementById('jokeBtn');
 
-jokeBtn.addEventListener('click', generateJoke())
+jokeBtn.addEventListener('click', generateJoke());
 
-generateJoke()
-
+generateJoke();
 
 // USING async await
-async function generateJoke() {
-    const config = {
-        headers: {
-            'Accept': 'application/json'
-        },
-    }
-
-    const res = await fetch('https://icanhazdadjoke.com', 
-    config)
-
-    const data = await res.json()
-
-    jokeEL.innerHTML = data.joke
-
-}
-
-// var msg = new SpeechSynthesisUtterance();
-
-// msg.text = data.joke
-// window.speechSynthesis.speak(msg.text);
-
-
-// USING .then()
-// function generateJoke() {
+// async function generateJoke() {
 //     const config = {
 //         headers: {
 //             'Accept': 'application/json'
-//         }
+//         },
 //     }
 
-//     fetch('https://icanhazdadjoke.com', config)
-//         .then((res) => res.json())
-//         .then((data) => {
-//             jokeEL.innerHTML = data.joke
-//         })
-//         //console.log(data))
+//     const res = await fetch('https://icanhazdadjoke.com', 
+//     config)
+
+//     const data = await res.json()
+
+//     jokeEL.innerHTML = data.joke
+
 // }
+
+
+USING .then()
+function generateJoke() {
+    const config = {
+        headers: {
+            'Accept': 'application/json'
+        }
+    }
+
+    fetch('https://icanhazdadjoke.com', config)
+        .then((res) => res.json())
+        .then((data) => {
+            jokeEL.innerHTML = data.joke
+        })
+        //console.log(data))
+}
