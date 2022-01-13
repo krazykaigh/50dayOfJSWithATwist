@@ -1,28 +1,26 @@
 /*jshint esversion: 8 */
 
-const jokeEL = document.getElementById('joke');
+const jokeEl = document.getElementById('joke');
 const jokeBtn = document.getElementById('jokeBtn');
 
-jokeBtn.addEventListener('click', generateJoke());
+jokeBtn.addEventListener('click', generateJoke);
 
 generateJoke();
 
-// USING async await
+// USING ASYNC/AWAIT
 async function generateJoke() {
-    const config = {
-        headers: {
-            'Accept': 'application/json'
-        },
-    };
-    const res = await fetch('https://icanhazdadjoke.com',
-        config);
+  const config = {
+    headers: {
+      Accept: 'application/json',
+    },
+  };
 
-    const data = await res.json();
+  const res = await fetch('https://icanhazdadjoke.com', config);
 
-    jokeEL.innerHTML = data.joke;
+  const data = await res.json();
 
+  jokeEl.innerHTML = data.joke;
 }
-
 // USING .then()
 // function generateJoke() {
 //     const config = {
