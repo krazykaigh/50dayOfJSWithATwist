@@ -2,6 +2,7 @@
 
 const jokeEl = document.getElementById('joke');
 const jokeBtn = document.getElementById('jokeBtn');
+var msg = new SpeechSynthesisUtterance();
 
 jokeBtn.addEventListener('click', generateJoke);
 
@@ -18,8 +19,10 @@ async function generateJoke() {
   const res = await fetch('https://icanhazdadjoke.com', config);
 
   const data = await res.json();
+  msg.text = data.joke;
 
   jokeEl.innerHTML = data.joke;
+  window.speechSynthesis.speak(msg);
 }
 // USING .then()
 // function generateJoke() {
